@@ -95,7 +95,7 @@ public class ModelEngineTaskHandler implements TaskHandler {
     public void sendEntityData(EntityData entityData, Player player, int delay) {
         ModelEngineEntityData modelEngineEntityData = (ModelEngineEntityData) entityData;
 
-        EntityUtils.setCustomEntity(player, modelEngineEntityData.getEntity().getEntityId(), plugin.getConfigManager().getConfig().getString("namespace") + ":" + modelEngineEntityData.getActiveModel().getBlueprint().getName().toLowerCase());
+        EntityUtils.setCustomEntity(player, modelEngineEntityData.getEntity().getEntityId(), plugin.getConfigManager().getConfig().getString("models.namespace") + ":" + modelEngineEntityData.getActiveModel().getBlueprint().getName().toLowerCase());
 
         plugin.getSchedulerPool().schedule(() -> {
             entityData.getEntity().sendSpawnPacket(Collections.singletonList(player));

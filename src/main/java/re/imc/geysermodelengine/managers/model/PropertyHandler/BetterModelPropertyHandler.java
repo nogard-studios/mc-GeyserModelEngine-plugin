@@ -11,7 +11,6 @@ import org.jetbrains.annotations.NotNull;
 import re.imc.geysermodelengine.GeyserModelEngine;
 import re.imc.geysermodelengine.managers.model.entity.BetterModelEntityData;
 import re.imc.geysermodelengine.managers.model.entity.EntityData;
-import re.imc.geysermodelengine.managers.model.entity.ModelEngineEntityData;
 import re.imc.geysermodelengine.util.BooleanPacker;
 
 import java.awt.*;
@@ -111,13 +110,13 @@ public class BetterModelPropertyHandler implements PropertyHandler {
         int i = 0;
 
         for (Integer integer : BooleanPacker.mapBooleansToInts(boneUpdates)) {
-            intUpdates.put(plugin.getConfigManager().getConfig().getString("namespace") + ":bone" + i, integer);
+            intUpdates.put(plugin.getConfigManager().getConfig().getString("models.namespace") + ":bone" + i, integer);
             i++;
         }
 
         i = 0;
         for (Integer integer : BooleanPacker.mapBooleansToInts(animUpdates)) {
-            intUpdates.put(plugin.getConfigManager().getConfig().getString("namespace") + ":anim" + i, integer);
+            intUpdates.put(plugin.getConfigManager().getConfig().getString("models.namespace") + ":anim" + i, integer);
             i++;
         }
 
@@ -130,7 +129,7 @@ public class BetterModelPropertyHandler implements PropertyHandler {
             }
         }
 
-        if (plugin.getConfigManager().getConfig().getBoolean("debug")) plugin.getLogger().info(animUpdates.toString());
+        if (plugin.getConfigManager().getConfig().getBoolean("options.debug")) plugin.getLogger().info(animUpdates.toString());
 
         List<String> list = new ArrayList<>(boneUpdates.keySet());
         Collections.sort(list);

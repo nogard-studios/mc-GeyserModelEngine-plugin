@@ -62,7 +62,7 @@ public class EntityTaskManager {
         boolean firstJoined = !plugin.getModelManager().getPlayerJoinedCache().contains(onlinePlayer.getUniqueId());
 
         if (firstJoined) {
-            task.sendEntityData(model, onlinePlayer, plugin.getConfigManager().getConfig().getInt("join-send-delay") / 50);
+            task.sendEntityData(model, onlinePlayer, plugin.getConfigManager().getConfig().getInt("models.join-send-delay") / 50);
         } else {
             task.sendEntityData(model, onlinePlayer, 5);
         }

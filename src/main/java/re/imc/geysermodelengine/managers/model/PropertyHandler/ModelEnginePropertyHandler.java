@@ -3,7 +3,6 @@ package re.imc.geysermodelengine.managers.model.PropertyHandler;
 import com.ticxo.modelengine.api.animation.BlueprintAnimation;
 import com.ticxo.modelengine.api.animation.handler.AnimationHandler;
 import com.ticxo.modelengine.api.generator.blueprint.BlueprintBone;
-import com.ticxo.modelengine.api.model.ActiveModel;
 import com.ticxo.modelengine.api.model.bone.ModelBone;
 import com.ticxo.modelengine.api.model.render.DisplayRenderer;
 import me.zimzaza4.geyserutils.spigot.api.EntityUtils;
@@ -130,13 +129,13 @@ public class ModelEnginePropertyHandler implements PropertyHandler {
         int i = 0;
 
         for (Integer integer : BooleanPacker.mapBooleansToInts(boneUpdates)) {
-            intUpdates.put(plugin.getConfigManager().getConfig().getString("namespace") + ":bone" + i, integer);
+            intUpdates.put(plugin.getConfigManager().getConfig().getString("models.namespace") + ":bone" + i, integer);
             i++;
         }
 
         i = 0;
         for (Integer integer : BooleanPacker.mapBooleansToInts(animUpdates)) {
-            intUpdates.put(plugin.getConfigManager().getConfig().getString("namespace") + ":anim" + i, integer);
+            intUpdates.put(plugin.getConfigManager().getConfig().getString("models.namespace") + ":anim" + i, integer);
             i++;
         }
 
@@ -149,7 +148,7 @@ public class ModelEnginePropertyHandler implements PropertyHandler {
             }
         }
 
-        if (plugin.getConfigManager().getConfig().getBoolean("debug")) plugin.getLogger().info(animUpdates.toString());
+        if (plugin.getConfigManager().getConfig().getBoolean("options.debug")) plugin.getLogger().info(animUpdates.toString());
 
         List<String> list = new ArrayList<>(boneUpdates.keySet());
         Collections.sort(list);

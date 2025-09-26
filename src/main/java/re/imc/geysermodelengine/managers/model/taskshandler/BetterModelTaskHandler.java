@@ -58,7 +58,6 @@ public class BetterModelTaskHandler implements TaskHandler {
 
         entityData.teleportToModel();
 
-
         if (entitySource.isDead() || tracker.forRemoval()) {
             removed = true;
             entity.remove();
@@ -96,7 +95,7 @@ public class BetterModelTaskHandler implements TaskHandler {
     public void sendEntityData(EntityData entityData, Player player, int delay) {
         BetterModelEntityData betterModelEntityData = (BetterModelEntityData) entityData;
 
-        EntityUtils.setCustomEntity(player, betterModelEntityData.getEntity().getEntityId(), plugin.getConfigManager().getConfig().getString("namespace") + ":" + betterModelEntityData.getTracker().name().toLowerCase());
+        EntityUtils.setCustomEntity(player, betterModelEntityData.getEntity().getEntityId(), plugin.getConfigManager().getConfig().getString("models.namespace") + ":" + betterModelEntityData.getTracker().name().toLowerCase());
 
         plugin.getSchedulerPool().schedule(() -> {
             entityData.getEntity().sendSpawnPacket(Collections.singletonList(player));
