@@ -14,5 +14,3 @@ models:
 
 options:
   debug: false
-  resource-pack:
-    auto-load: true
