@@ -59,7 +59,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GradleScriptDefinitionsStorage" workingDir="$PROJECT_DIR$" gradleHome="$USER_HOME$/.gradle/wrapper/dists/gradle-8.12-bin/cetblhg4pflnnks72fxwobvgv/gradle-8.12" javaHome="$USER_HOME$/.jdks/openjdk-21.0.1" gradleVersion="8.12" />
+  <component name="GradleScriptDefinitionsStorage" workingDir="$PROJECT_DIR$" gradleHome="C:\Users\Livid\.gradle\wrapper\dists\gradle-8.12-bin\cetblhg4pflnnks72fxwobvgv\gradle-8.12" javaHome="C:\Users\Livid\.jdks\openjdk-21.0.1" gradleVersion="8.12" />
   <component name="MavenRunner">
     <option name="delegateBuildToMaven" value="true" />
   </component>
