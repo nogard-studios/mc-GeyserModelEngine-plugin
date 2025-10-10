@@ -29,7 +29,6 @@ public class BedrockMountControlRunnable implements Consumer<ScheduledTask> {
 
             float pitch = player.getLocation().getPitch();
             Pair<ActiveModel, Mount> seat = plugin.getModelManager().getDriversCache().get(player.getUniqueId());
-
             if (seat == null) continue;
 
             if (pitch < -30) {
@@ -45,13 +44,10 @@ public class BedrockMountControlRunnable implements Consumer<ScheduledTask> {
 
             if (pitch > 80) {
                 if (seat.getKey().getModeledEntity().getBase() instanceof BukkitEntity bukkitEntity) {
-                    if (bukkitEntity.getOriginal().isOnGround()) {
-                        return;
-                    }
+                    if (bukkitEntity.getOriginal().isOnGround()) continue;
                 }
 
                 MountController controller = ModelEngineAPI.getMountPairManager().getController(player.getUniqueId());
-
                 if (controller != null) {
                     MountController.MountInput input = controller.getInput();
                     if (input != null) {

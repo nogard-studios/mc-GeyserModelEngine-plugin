@@ -20,7 +20,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.21.9-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.21.10-R0.1-SNAPSHOT")
     implementation("dev.jorel:commandapi-paper-shade:11.0.0")
 
     compileOnly("com.ticxo.modelengine:ModelEngine:R4.0.9")
@@ -28,7 +28,7 @@ dependencies {
     compileOnly(files("libs/geyserutils-spigot-1.0-SNAPSHOT.jar"))
     compileOnly("org.geysermc.floodgate:api:2.2.4-SNAPSHOT")
 
-    implementation("com.github.retrooper:packetevents-spigot:2.9.6-SNAPSHOT")
+    implementation("com.github.retrooper:packetevents-spigot:2.10.0-SNAPSHOT")
     implementation("org.bstats:bstats-bukkit:3.0.2")
 
     implementation("org.reflections:reflections:0.10.2")

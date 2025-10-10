@@ -51,10 +51,6 @@ public class ModelListener implements Listener {
         }
     }
 
-    /*
-     / xSquishyLiam:
-     / I'm wondering if we could move this to more of a player loading chunks instead of checking all worlds via PlayerChunkLoadEvent?
-    */
     @EventHandler
     public void onWorldInit(WorldInitEvent event) {
         World world = event.getWorld();
