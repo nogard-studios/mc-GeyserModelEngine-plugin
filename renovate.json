@@ -1,0 +1,40 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "gradle:default",
+    ":separateMajorReleases",
+    ":prImmediately"
+  ],
+  "baseBranches": ["main"],
+  "labels": ["dependencies", "gradle"],
+  "prConcurrentLimit": 5,
+  "prHourlyLimit": 1,
+  "dependencyDashboard": true,
+
+  "packageRules": [
+    {
+      "description": "Useful libraries",
+      "matchPackagePatterns": [
+        "dev.jorel:commandapi-paper-shade",
+        "com.github.retrooper",
+        "org.reflections"
+      ],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    },
+    {
+      "description": "Plugin API dependencies",
+      "matchPackagePatterns": [
+        "com.ticxo.modelengine",
+        "org.geysermc.floodgate"
+      ],
+      "groupName": "Minecraft Plugins APIs"
+    },
+    {
+      "description": "Automatically update Gradle Wrapper",
+      "matchManagers": ["gradle-wrapper"],
+      "groupName": "Gradle Wrapper Update"
+    }
+  ]
+}
