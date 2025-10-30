@@ -77,7 +77,7 @@ public class BetterModelPropertyHandler implements PropertyHandler {
 
         for (RenderedBone renderedBone : handler.bones()) {
             if (model.getTracker().bone(renderedBone.name()).runningAnimation() != null) {
-                BlueprintAnimation anim = model.getTracker().renderer().animationMap().get(renderedBone.runningAnimation().name());
+                BlueprintAnimation anim = model.getTracker().renderer().animations().get(renderedBone.runningAnimation().name());
 
                 anims.add(renderedBone.runningAnimation().name());
                 if (anim.override() && anim.loop() == AnimationIterator.Type.PLAY_ONCE) {
@@ -86,7 +86,7 @@ public class BetterModelPropertyHandler implements PropertyHandler {
             }
         }
 
-        for (String id : handler.getParent().animations()) {
+        for (String id : handler.getParent().animations().keySet()) {
             if (anims.contains(id)) {
                 animUpdates.put(id, true);
             } else {
