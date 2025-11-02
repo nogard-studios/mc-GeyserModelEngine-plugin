@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff2e9770-ec88-4715-adeb-b9dbda130e1a" name="Changes" comment="" />
+    <list default="true" id="ff2e9770-ec88-4715-adeb-b9dbda130e1a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -198,9 +201,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.GeyserModelEngine [build]" />
+        <item itemvalue="Gradle.GeyserModelEngine [jar]" />
         <item itemvalue="Gradle.GeyserModelEngine [buildDependents]" />
         <item itemvalue="Gradle.GeyserModelEngine [buildNeeded]" />
-        <item itemvalue="Gradle.GeyserModelEngine [jar]" />
       </list>
     </recent_temporary>
   </component>
