@@ -2,7 +2,6 @@ package re.imc.geysermodelengine.listener;
 
 import com.ticxo.modelengine.api.events.*;
 import com.ticxo.modelengine.api.model.ActiveModel;
-import kr.toxicity.model.api.data.raw.ModelData;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -10,7 +9,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import re.imc.geysermodelengine.GeyserModelEngine;
 import re.imc.geysermodelengine.managers.model.entity.EntityData;
-import re.imc.geysermodelengine.managers.model.entity.ModelEngineEntityData;
 import re.imc.geysermodelengine.managers.model.model.Model;
 
 import java.util.Map;
