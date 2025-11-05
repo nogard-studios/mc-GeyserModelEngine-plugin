@@ -1,16 +1,13 @@
-metrics:
-  bstats: true
+bstats: true
 
-models:
-  namespace: "modelengine"
-  data-send-delay: 5
-  entity-view-distance: 50
-  join-send-delay: 20
-  entity-position-update-period: 35
-  thread-pool-size: 4
-  model-entity-type: BAT # must be a living entity
-  enable-part-visibility-models:
-    - example
+namespace: "modelengine"
+data-send-delay: 5
+entity-view-distance: 50
+join-send-delay: 20
+entity-position-update-period: 35
+thread-pool-size: 4
+model-entity-type: BAT # must be a living entity
+enable-part-visibility-models:
+  - example
 
-options:
-  debug: false
+debug: false
