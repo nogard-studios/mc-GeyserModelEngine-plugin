@@ -78,7 +78,6 @@ public class PacketEntity {
     }
 
     public void sendLocationPacket(Collection<Player> players) {
-
         PacketWrapper<?> packet;
         EntityPositionData data = new EntityPositionData(SpigotConversionUtil.fromBukkitLocation(location).getPosition(), Vector3d.zero(), location.getYaw(), location.getPitch());
 
