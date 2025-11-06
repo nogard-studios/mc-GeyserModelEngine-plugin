@@ -1,4 +1,4 @@
-package re.imc.geysermodelengine.managers.model.PropertyHandler;
+package re.imc.geysermodelengine.managers.model.propertyhandler;
 
 import kr.toxicity.model.api.animation.AnimationIterator;
 import kr.toxicity.model.api.bone.RenderedBone;

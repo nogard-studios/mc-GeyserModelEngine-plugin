@@ -1,4 +1,4 @@
-package re.imc.geysermodelengine.managers.model.ModelHandler;
+package re.imc.geysermodelengine.managers.model.modelhandler;
 
 import com.ticxo.modelengine.api.ModelEngineAPI;
 import com.ticxo.modelengine.api.model.ActiveModel;
@@ -11,7 +11,7 @@ import re.imc.geysermodelengine.managers.model.entity.EntityData;
 import re.imc.geysermodelengine.managers.model.entity.ModelEngineEntityData;
 import re.imc.geysermodelengine.managers.model.model.Model;
 import re.imc.geysermodelengine.managers.model.model.ModelEngineModel;
-import re.imc.geysermodelengine.managers.model.PropertyHandler.PropertyHandler;
+import re.imc.geysermodelengine.managers.model.propertyhandler.PropertyHandler;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package re.imc.geysermodelengine.managers.model.ModelHandler;
+package re.imc.geysermodelengine.managers.model.modelhandler;
 
 import org.bukkit.entity.Entity;
 

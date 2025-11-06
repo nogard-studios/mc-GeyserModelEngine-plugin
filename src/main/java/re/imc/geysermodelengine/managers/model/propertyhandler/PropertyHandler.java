@@ -1,4 +1,4 @@
-package re.imc.geysermodelengine.managers.model.PropertyHandler;
+package re.imc.geysermodelengine.managers.model.propertyhandler;
 
 import org.bukkit.entity.Player;
 import re.imc.geysermodelengine.managers.model.entity.EntityData;

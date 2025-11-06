@@ -7,9 +7,9 @@ import org.bukkit.Bukkit;
 import re.imc.geysermodelengine.GeyserModelEngine;
 import re.imc.geysermodelengine.managers.model.entity.EntityData;
 import re.imc.geysermodelengine.managers.model.model.Model;
-import re.imc.geysermodelengine.managers.model.ModelHandler.BetterModelHandler;
-import re.imc.geysermodelengine.managers.model.ModelHandler.ModelEngineHandler;
-import re.imc.geysermodelengine.managers.model.ModelHandler.ModelHandler;
+import re.imc.geysermodelengine.managers.model.modelhandler.BetterModelHandler;
+import re.imc.geysermodelengine.managers.model.modelhandler.ModelEngineHandler;
+import re.imc.geysermodelengine.managers.model.modelhandler.ModelHandler;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;

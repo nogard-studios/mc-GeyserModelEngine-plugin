@@ -1,4 +1,4 @@
-package re.imc.geysermodelengine.managers.model.PropertyHandler;
+package re.imc.geysermodelengine.managers.model.propertyhandler;
 
 import com.ticxo.modelengine.api.animation.BlueprintAnimation;
 import com.ticxo.modelengine.api.animation.handler.AnimationHandler;
