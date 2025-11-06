@@ -3,6 +3,7 @@ package re.imc.geysermodelengine;
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.event.PacketListenerPriority;
 import dev.jorel.commandapi.CommandAPI;
+import dev.jorel.commandapi.CommandAPIBukkitConfig;
 import dev.jorel.commandapi.CommandAPIPaperConfig;
 import io.github.retrooper.packetevents.factory.spigot.SpigotPacketEventsBuilder;
 import org.bstats.bukkit.Metrics;
@@ -53,10 +54,9 @@ public class GeyserModelEngine extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        PacketEvents.getAPI().terminate();
-
         this.modelManager.removeEntities();
 
+        PacketEvents.getAPI().terminate();
         CommandAPI.onDisable();
     }
 
@@ -66,7 +66,7 @@ public class GeyserModelEngine extends JavaPlugin {
     }
 
     private void loadBStats() {
-        if (configManager.getConfig().getBoolean("bstats", true)) new Metrics(this, 26981);
+        if (configManager.getConfig().getBoolean("metrics.bstats", true)) new Metrics(this, 26981);
     }
 
     private void loadManagers() {
@@ -79,9 +79,9 @@ public class GeyserModelEngine extends JavaPlugin {
     }
 
     private void loadRunnables() {
-        this.schedulerPool = Executors.newScheduledThreadPool(configManager.getConfig().getInt("thread-pool-size", 4));
+        this.schedulerPool = Executors.newScheduledThreadPool(configManager.getConfig().getInt("models.thread-pool-size", 4));
 
-        Bukkit.getAsyncScheduler().runAtFixedRate(this, new UpdateTaskRunnable(this), 10, configManager.getConfig().getLong("entity-position-update-period", 35), TimeUnit.MILLISECONDS);
+        Bukkit.getAsyncScheduler().runAtFixedRate(this, new UpdateTaskRunnable(this), 10, configManager.getConfig().getLong("models.entity-position-update-period", 35), TimeUnit.MILLISECONDS);
         Bukkit.getAsyncScheduler().runAtFixedRate(this, new BedrockMountControlRunnable(this), 1, 1, TimeUnit.MILLISECONDS);
     }
 

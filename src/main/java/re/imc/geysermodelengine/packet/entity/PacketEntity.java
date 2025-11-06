@@ -58,7 +58,6 @@ public class PacketEntity {
         return true;
     }
 
-
     public void remove() {
         removed = true;
         sendEntityDestroyPacket(viewers);

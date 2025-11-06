@@ -16,7 +16,9 @@ dependencies:
       required: true
     packetevents:
       required: true
-    ModelEngine:
-      required: true
     floodgate:
       required: true
+    ModelEngine:
+      required: false
+    BetterModel:
+      required: false

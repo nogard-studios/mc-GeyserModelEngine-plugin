@@ -1,84 +1,45 @@
 package re.imc.geysermodelengine.managers.model;
 
 import com.ticxo.modelengine.api.animation.BlueprintAnimation;
-import com.ticxo.modelengine.api.generator.blueprint.BlueprintBone;
 import com.ticxo.modelengine.api.model.ActiveModel;
-import com.ticxo.modelengine.api.model.render.DisplayRenderer;
 import me.zimzaza4.geyserutils.spigot.api.EntityUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.geysermc.floodgate.api.FloodgateApi;
-import org.joml.Vector3fc;
 import re.imc.geysermodelengine.GeyserModelEngine;
-import re.imc.geysermodelengine.managers.model.data.ModelEntityData;
+import re.imc.geysermodelengine.managers.model.entity.EntityData;
+import re.imc.geysermodelengine.managers.model.propertyhandler.BetterModelPropertyHandler;
+import re.imc.geysermodelengine.managers.model.propertyhandler.ModelEnginePropertyHandler;
+import re.imc.geysermodelengine.managers.model.propertyhandler.PropertyHandler;
+import re.imc.geysermodelengine.managers.model.entity.ModelEngineEntityData;
+import re.imc.geysermodelengine.managers.model.taskshandler.TaskHandler;
 import re.imc.geysermodelengine.packet.entity.PacketEntity;
-import re.imc.geysermodelengine.runnables.EntityTaskRunnable;
 
-import java.awt.*;
-import java.lang.reflect.Method;
 import java.util.*;
 
 public class EntityTaskManager {
 
     private final GeyserModelEngine plugin;
 
-    private final Method scaleMethod;
+    private PropertyHandler propertyHandler;
 
     public EntityTaskManager(GeyserModelEngine plugin) {
         this.plugin = plugin;
 
-        try {
-            this.scaleMethod = ActiveModel.class.getMethod("getScale");
-        } catch (NoSuchMethodException err) {
-            throw new RuntimeException(err);
+        if (Bukkit.getPluginManager().getPlugin("ModelEngine") != null) {
+            this.propertyHandler = new ModelEnginePropertyHandler(plugin);
+            plugin.getLogger().info("Using ModelEngine property handler!");
+        } else if (Bukkit.getPluginManager().getPlugin("BetterModel") != null) {
+            this.propertyHandler = new BetterModelPropertyHandler(plugin);
+            plugin.getLogger().info("Using BetterModel property handler!");
+        } else {
+            plugin.getLogger().severe("No supported model engine found!");
+            plugin.getServer().getPluginManager().disablePlugin(plugin);
         }
     }
 
-    public String unstripName(BlueprintBone bone) {
-        String name = bone.getName();
-        if (bone.getBehaviors().get("head") != null) {
-            if (!bone.getBehaviors().get("head").isEmpty()) return "hi_" + name;
-            return "h_" + name;
-        }
-
-        return name;
-    }
-
-    public void sendScale(ModelEntityData model, Collection<Player> players, float lastScale, boolean firstSend) {
-        try {
-            if (players.isEmpty()) return;
-
-            Vector3fc scale = (Vector3fc) scaleMethod.invoke(model.getActiveModel());
-
-            float average = (scale.x() + scale.y() + scale.z()) / 3;
-
-            if (!firstSend) {
-                if (average == lastScale) return;
-            }
-
-            for (Player player : players) {
-                EntityUtils.sendCustomScale(player, model.getEntity().getEntityId(), average);
-            }
-        } catch (Throwable ignored) {}
-    }
-
-    public void sendColor(ModelEntityData model, Collection<Player> players, Color lastColor, boolean firstSend) {
-        if (players.isEmpty()) return;
-
-        Color color = new Color(model.getActiveModel().getDefaultTint().asARGB());
-        if (model.getActiveModel().isMarkedHurt()) color = new Color(model.getActiveModel().getDamageTint().asARGB());
-
-        if (firstSend) {
-            if (color.equals(lastColor)) return;
-        }
-
-        for (Player player : players) {
-            EntityUtils.sendCustomColor(player, model.getEntity().getEntityId(), color);
-        }
-    }
-
-    public void checkViewers(ModelEntityData model, Set<Player> viewers) {
+    public void checkViewers(EntityData model, Set<Player> viewers) {
         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
             if (!FloodgateApi.getInstance().isFloodgatePlayer(onlinePlayer.getUniqueId())) continue;
 
@@ -96,12 +57,12 @@ public class EntityTaskManager {
         }
     }
 
-    private void sendSpawnPacket(ModelEntityData model, Player onlinePlayer) {
-        EntityTaskRunnable task = model.getEntityTask();
+    private void sendSpawnPacket(EntityData model, Player onlinePlayer) {
+        TaskHandler task = model.getEntityTask();
         boolean firstJoined = !plugin.getModelManager().getPlayerJoinedCache().contains(onlinePlayer.getUniqueId());
 
         if (firstJoined) {
-            task.sendEntityData(model, onlinePlayer, plugin.getConfigManager().getConfig().getInt("join-send-delay") / 50);
+            task.sendEntityData(model, onlinePlayer, plugin.getConfigManager().getConfig().getInt("models.join-send-delay") / 50);
         } else {
             task.sendEntityData(model, onlinePlayer, 5);
         }
@@ -122,31 +83,20 @@ public class EntityTaskManager {
         return true;
     }
 
-    public void sendHitBoxToAll(ModelEntityData model) {
+    public void sendHitBoxToAll(EntityData model) {
         for (Player viewer : model.getViewers()) {
             EntityUtils.sendCustomHitBox(viewer, model.getEntity().getEntityId(), 0.01f, 0.01f);
         }
     }
 
-    public void sendHitBox(ModelEntityData model, Player viewer) {
-        float w = 0;
-
-        if (model.getActiveModel().isShadowVisible()) {
-            if (model.getActiveModel().getModelRenderer() instanceof DisplayRenderer displayRenderer) {
-                //    w = displayRenderer.getHitbox().getShadowRadius().get();
-            }
-        }
-
-        EntityUtils.sendCustomHitBox(viewer, model.getEntity().getEntityId(), 0.02f, w);
-    }
-
-    public boolean hasAnimation(ModelEntityData model, String animation) {
+    //TODO move this
+    public boolean hasAnimation(ModelEngineEntityData model, String animation) {
         ActiveModel activeModel = model.getActiveModel();
         BlueprintAnimation animationProperty = activeModel.getBlueprint().getAnimations().get(animation);
         return !(animationProperty == null);
     }
 
-    public Method getScaleMethod() {
-        return scaleMethod;
+    public PropertyHandler getPropertyHandler() {
+        return propertyHandler;
     }
 }
