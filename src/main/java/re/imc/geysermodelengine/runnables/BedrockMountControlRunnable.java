@@ -14,7 +14,7 @@ import re.imc.geysermodelengine.GeyserModelEngine;
 import java.util.UUID;
 import java.util.function.Consumer;
 
-public class BedrockMountControlRunnable implements Consumer<ScheduledTask> {
+public class BedrockMountControlRunnable implements Runnable {
 
     private final GeyserModelEngine plugin;
 
@@ -23,7 +23,7 @@ public class BedrockMountControlRunnable implements Consumer<ScheduledTask> {
     }
 
     @Override
-    public void accept(ScheduledTask scheduledTask) {
+    public void run() {
         for (UUID playerUUID : plugin.getModelManager().getPlayerJoinedCache()) {
             Player player = Bukkit.getPlayer(playerUUID);
 

@@ -47,10 +47,12 @@ public class ModelEngineTaskHandler implements TaskHandler {
 
     @Override
     public void runAsync() {
-        plugin.getEntityTaskManager().checkViewers(entityData, entityData.getViewers());
+        if (removed || entityData == null) return;
 
         PacketEntity entity = entityData.getEntity();
-        if (entity.isDead()) return;
+        if (entity == null || entity.isDead()) return;
+
+        plugin.getEntityTaskManager().checkViewers(entityData, entityData.getViewers());
 
         entityData.teleportToModel();
 
@@ -71,11 +73,7 @@ public class ModelEngineTaskHandler implements TaskHandler {
 
         if (tick % 5 == 0) {
             if (tick % 40 == 0) {
-                for (Player viewer : Set.copyOf(viewers)) {
-                    if (!plugin.getEntityTaskManager().canSee(viewer, entityData.getEntity())) {
-                        viewers.remove(viewer);
-                    }
-                }
+                viewers.removeIf(viewer -> !plugin.getEntityTaskManager().canSee(viewer, entityData.getEntity()));
             }
         }
 

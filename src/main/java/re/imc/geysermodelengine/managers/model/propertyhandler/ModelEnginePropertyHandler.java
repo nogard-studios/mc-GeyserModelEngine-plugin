@@ -40,28 +40,22 @@ public class ModelEnginePropertyHandler implements PropertyHandler {
                 if (average == lastScale) return;
             }
 
-            for (Player player : players) {
-                EntityUtils.sendCustomScale(player, modelEngineEntityData.getEntity().getEntityId(), average);
-            }
-        } catch (Throwable ignored) {}
+            players.forEach(player -> EntityUtils.sendCustomScale(player, modelEngineEntityData.getEntity().getEntityId(), average));
+        } catch (Exception err) {
+            throw new RuntimeException(err);
+        }
     }
 
     @Override
     public void sendColor(EntityData entityData, Collection<Player> players, Color lastColor, boolean firstSend) {
         if (players.isEmpty()) return;
 
-        ModelEngineEntityData modelEngineEntityData = (ModelEngineEntityData) entityData;
+        ModelEngineEntityData data = (ModelEngineEntityData) entityData;
+        Color color = calculateCurrentColor(data);
 
-        Color color = new Color(modelEngineEntityData.getActiveModel().getDefaultTint().asARGB());
-        if (modelEngineEntityData.getActiveModel().isMarkedHurt()) color = new Color(modelEngineEntityData.getActiveModel().getDamageTint().asARGB());
+        if (!firstSend && color.equals(lastColor)) return;
 
-        if (firstSend) {
-            if (color.equals(lastColor)) return;
-        }
-
-        for (Player player : players) {
-            EntityUtils.sendCustomColor(player, modelEngineEntityData.getEntity().getEntityId(), color);
-        }
+        players.forEach(player -> EntityUtils.sendCustomColor(player, data.getEntity().getEntityId(), color));
     }
 
     @Override
@@ -86,7 +80,7 @@ public class ModelEnginePropertyHandler implements PropertyHandler {
         int entity = model.getEntity().getEntityId();
         Set<String> forceAnimSet = Set.of(forceAnims);
 
-        Map<String, Boolean> boneUpdates = new HashMap<>();
+        Map<String, Boolean> boneUpdates = new LinkedHashMap<>();
         Map<String, Boolean> animUpdates = new HashMap<>();
         Set<String> anims = new HashSet<>();
 
@@ -121,7 +115,9 @@ public class ModelEnginePropertyHandler implements PropertyHandler {
             }
         }
 
-        for (String anim : lastPlayed) animUpdates.put(anim, true);
+        for (String anim : lastPlayed) {
+            animUpdates.put(anim, true);
+        }
 
         if (boneUpdates.isEmpty() && animUpdates.isEmpty()) return;
 
@@ -150,12 +146,21 @@ public class ModelEnginePropertyHandler implements PropertyHandler {
 
         if (plugin.getConfigManager().getConfig().getBoolean("options.debug")) plugin.getLogger().info(animUpdates.toString());
 
-        List<String> list = new ArrayList<>(boneUpdates.keySet());
-        Collections.sort(list);
+        players.forEach(player -> EntityUtils.sendIntProperties(player, entity, intUpdates));
+    }
 
-        for (Player player : players) {
-            EntityUtils.sendIntProperties(player, entity, intUpdates);
-        }
+    private void processBone(ModelEngineEntityData model, BlueprintBone bone, Map<String, Boolean> map) {
+        String name = unstripName(bone).toLowerCase();
+        if (name.equals("hitbox") || name.equals("shadow") || name.equals("mount") || name.startsWith("p_") || name.startsWith("b_") || name.startsWith("ob_")) return;
+
+        bone.getChildren().values().forEach(child -> processBone(model, child, map));
+
+        ModelBone activeBone = model.getActiveModel().getBones().get(bone.getName());
+
+        boolean visible = false;
+        if (activeBone != null) visible = activeBone.isVisible();
+
+        map.put(name, visible);
     }
 
     public String unstripName(BlueprintBone bone) {
@@ -168,19 +173,8 @@ public class ModelEnginePropertyHandler implements PropertyHandler {
         return name;
     }
 
-    private void processBone(ModelEngineEntityData model, BlueprintBone bone, Map<String, Boolean> map) {
-        String name = unstripName(bone).toLowerCase();
-        if (name.equals("hitbox") || name.equals("shadow") || name.equals("mount") || name.startsWith("p_") || name.startsWith("b_") || name.startsWith("ob_")) return;
-
-        for (BlueprintBone blueprintBone : bone.getChildren().values()) {
-            processBone(model, blueprintBone, map);
-        }
-
-        ModelBone activeBone = model.getActiveModel().getBones().get(bone.getName());
-
-        boolean visible = false;
-        if (activeBone != null) visible = activeBone.isVisible();
-
-        map.put(name, visible);
+    private Color calculateCurrentColor(ModelEngineEntityData data) {
+        if (data.getActiveModel().isMarkedHurt()) return new Color(data.getActiveModel().getDamageTint().asARGB());
+        return new Color(data.getActiveModel().getDefaultTint().asARGB());
     }
 }

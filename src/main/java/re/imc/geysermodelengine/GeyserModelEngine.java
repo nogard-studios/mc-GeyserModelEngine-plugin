@@ -80,8 +80,8 @@ public class GeyserModelEngine extends JavaPlugin {
     private void loadRunnables() {
         this.schedulerPool = Executors.newScheduledThreadPool(configManager.getConfig().getInt("models.thread-pool-size", 4));
 
-        Bukkit.getAsyncScheduler().runAtFixedRate(this, new UpdateTaskRunnable(this), 10, configManager.getConfig().getLong("models.entity-position-update-period", 35), TimeUnit.MILLISECONDS);
-        Bukkit.getAsyncScheduler().runAtFixedRate(this, new BedrockMountControlRunnable(this), 1, 1, TimeUnit.MILLISECONDS);
+        schedulerPool.scheduleAtFixedRate(new UpdateTaskRunnable(this), 10, configManager.getConfig().getLong("models.entity-position-update-period", 35), TimeUnit.MILLISECONDS);
+        schedulerPool.scheduleAtFixedRate(new BedrockMountControlRunnable(this), 1, 1, TimeUnit.MILLISECONDS);
     }
 
     public ConfigManager getConfigManager() {
