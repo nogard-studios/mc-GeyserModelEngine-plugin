@@ -35,4 +35,5 @@ jobs:
           automatic_release_tag: latest
           prerelease: false
           files: |
-            build/libs/GeyserModelEngine*.jar
+            paper/build/libs/GeyserModelEngine*.jar
+            geyser/build/libs/GeyserModelEngine*.jar
