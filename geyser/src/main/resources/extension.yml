@@ -1,6 +1,6 @@
 name: GeyserModelEnginePackGenerator
 id: geysermodelenginepackgenerator
-main: re.imc.geysermodelenginepackgenerator.geyser.GeyserModelEnginePackGenerator
+main: re.imc.geysermodelenginepackgenerator.GeyserModelEnginePackGenerator
 api: 2.7.0
 version: 1.0.0
 authors:

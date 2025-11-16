@@ -1,4 +1,4 @@
-main: re.imc.geysermodelengine.paper.GeyserModelEngine
+main: re.imc.geysermodelengine.GeyserModelEngine
 name: GeyserModelEngine
 version: '1.0.0'
 api-version: '1.21'
