@@ -1,9 +1,9 @@
-package re.imc.geysermodelenginepackgenerator.managers.resourcepack.generator;
+package re.imc.geysermodelengineextension.managers.resourcepack.generator;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import re.imc.geysermodelenginepackgenerator.GeyserModelEnginePackGenerator;
+import re.imc.geysermodelengineextension.GeyserModelEngineExtension;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -35,7 +35,7 @@ public class AnimationController {
                      }
                    """;
 
-    public void load(GeyserModelEnginePackGenerator extension, Animation animation, Entity entity) {
+    public void load(GeyserModelEngineExtension extension, Animation animation, Entity entity) {
         JsonObject root = new JsonObject();
         json = root;
         root.addProperty("format_version", "1.10.0");

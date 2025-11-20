@@ -1,20 +1,19 @@
-package re.imc.geysermodelenginepackgenerator.util;
+package re.imc.geysermodelengineextension.util;
 
 import org.spongepowered.configurate.CommentedConfigurationNode;
 import org.spongepowered.configurate.serialize.SerializationException;
 import org.spongepowered.configurate.yaml.YamlConfigurationLoader;
-import re.imc.geysermodelenginepackgenerator.GeyserModelEnginePackGenerator;
+import re.imc.geysermodelengineextension.GeyserModelEngineExtension;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
 public class FileConfiguration {
 
-    private final GeyserModelEnginePackGenerator extension = GeyserModelEnginePackGenerator.getExtension();
+    private final GeyserModelEngineExtension extension = GeyserModelEngineExtension.getExtension();
 
     private final Path dataDirectory = extension.dataFolder();
 

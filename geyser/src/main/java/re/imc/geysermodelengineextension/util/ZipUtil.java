@@ -1,4 +1,4 @@
-package re.imc.geysermodelenginepackgenerator.util;
+package re.imc.geysermodelengineextension.util;
 
 import java.io.File;
 import java.io.FileInputStream;

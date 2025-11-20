@@ -1,4 +1,4 @@
-package re.imc.geysermodelenginepackgenerator;
+package re.imc.geysermodelengineextension;
 
 import org.geysermc.event.subscribe.Subscribe;
 import org.geysermc.geyser.api.command.Command;
@@ -9,12 +9,12 @@ import org.geysermc.geyser.api.event.lifecycle.GeyserPreInitializeEvent;
 import org.geysermc.geyser.api.extension.Extension;
 import org.geysermc.geyser.api.pack.PackCodec;
 import org.geysermc.geyser.api.pack.ResourcePack;
-import re.imc.geysermodelenginepackgenerator.managers.ConfigManager;
-import re.imc.geysermodelenginepackgenerator.managers.resourcepack.ResourcePackManager;
+import re.imc.geysermodelengineextension.managers.ConfigManager;
+import re.imc.geysermodelengineextension.managers.resourcepack.ResourcePackManager;
 
-public class GeyserModelEnginePackGenerator implements Extension {
+public class GeyserModelEngineExtension implements Extension {
 
-    private static GeyserModelEnginePackGenerator extension;
+    private static GeyserModelEngineExtension extension;
 
     private ConfigManager configManager;
 
@@ -57,7 +57,7 @@ public class GeyserModelEnginePackGenerator implements Extension {
         this.resourcePackManager = new ResourcePackManager(this);
     }
 
-    public static GeyserModelEnginePackGenerator getExtension() {
+    public static GeyserModelEngineExtension getExtension() {
         return extension;
     }
 

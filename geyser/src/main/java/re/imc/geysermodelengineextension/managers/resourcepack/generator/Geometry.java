@@ -1,7 +1,7 @@
-package re.imc.geysermodelenginepackgenerator.managers.resourcepack.generator;
+package re.imc.geysermodelengineextension.managers.resourcepack.generator;
 
 import com.google.gson.*;
-import re.imc.geysermodelenginepackgenerator.managers.resourcepack.generator.data.BoneData;
+import re.imc.geysermodelengineextension.managers.resourcepack.generator.data.BoneData;
 
 import java.util.*;
 

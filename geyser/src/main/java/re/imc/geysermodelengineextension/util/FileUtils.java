@@ -1,6 +1,6 @@
-package re.imc.geysermodelenginepackgenerator.util;
+package re.imc.geysermodelengineextension.util;
 
-import re.imc.geysermodelenginepackgenerator.GeyserModelEnginePackGenerator;
+import re.imc.geysermodelengineextension.GeyserModelEngineExtension;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,7 +27,7 @@ public class FileUtils {
         return files;
     }
 
-    public static void createFiles(GeyserModelEnginePackGenerator extension, String fileName) {
+    public static void createFiles(GeyserModelEngineExtension extension, String fileName) {
         Path config = extension.dataFolder().resolve(fileName);
         if (Files.exists(config)) return;
 

@@ -1,4 +1,4 @@
-package re.imc.geysermodelenginepackgenerator.managers.resourcepack.generator.data;
+package re.imc.geysermodelengineextension.managers.resourcepack.generator.data;
 
 import java.util.Set;
 

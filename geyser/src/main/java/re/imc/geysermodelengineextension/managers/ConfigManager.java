@@ -1,6 +1,6 @@
-package re.imc.geysermodelenginepackgenerator.managers;
+package re.imc.geysermodelengineextension.managers;
 
-import re.imc.geysermodelenginepackgenerator.util.FileConfiguration;
+import re.imc.geysermodelengineextension.util.FileConfiguration;
 
 public class ConfigManager {
 

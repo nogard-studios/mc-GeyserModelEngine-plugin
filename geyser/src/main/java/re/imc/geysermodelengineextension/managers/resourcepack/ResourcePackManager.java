@@ -1,12 +1,12 @@
-package re.imc.geysermodelenginepackgenerator.managers.resourcepack;
+package re.imc.geysermodelengineextension.managers.resourcepack;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParser;
-import re.imc.geysermodelenginepackgenerator.GeyserModelEnginePackGenerator;
-import re.imc.geysermodelenginepackgenerator.managers.resourcepack.generator.*;
-import re.imc.geysermodelenginepackgenerator.managers.resourcepack.generator.data.TextureData;
-import re.imc.geysermodelenginepackgenerator.util.ZipUtil;
+import re.imc.geysermodelengineextension.GeyserModelEngineExtension;
+import re.imc.geysermodelengineextension.managers.resourcepack.generator.*;
+import re.imc.geysermodelengineextension.managers.resourcepack.generator.data.TextureData;
+import re.imc.geysermodelengineextension.util.ZipUtil;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -19,7 +19,7 @@ import java.util.zip.ZipOutputStream;
 
 public class ResourcePackManager {
 
-    private final GeyserModelEnginePackGenerator extension;
+    private final GeyserModelEngineExtension extension;
 
     private final File inputFolder;
     private final File generatedPack;
@@ -33,7 +33,7 @@ public class ResourcePackManager {
 
     private final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
-    public ResourcePackManager(GeyserModelEnginePackGenerator extension) {
+    public ResourcePackManager(GeyserModelEngineExtension extension) {
         this.extension = extension;
 
         this.inputFolder = extension.dataFolder().resolve("input").toFile();

@@ -1,7 +1,6 @@
-package re.imc.geysermodelenginepackgenerator.util;
+package re.imc.geysermodelengineextension.util;
 
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class BooleanPacker {
 

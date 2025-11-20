@@ -1,4 +1,4 @@
-package re.imc.geysermodelenginepackgenerator.managers.resourcepack.generator;
+package re.imc.geysermodelengineextension.managers.resourcepack.generator;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.*;

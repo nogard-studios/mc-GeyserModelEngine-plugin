@@ -1,4 +1,4 @@
-package re.imc.geysermodelenginepackgenerator.managers.resourcepack.generator;
+package re.imc.geysermodelengineextension.managers.resourcepack.generator;
 
 import java.util.UUID;
 

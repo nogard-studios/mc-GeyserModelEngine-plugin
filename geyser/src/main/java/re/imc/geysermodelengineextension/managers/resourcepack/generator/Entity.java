@@ -1,10 +1,10 @@
-package re.imc.geysermodelenginepackgenerator.managers.resourcepack.generator;
+package re.imc.geysermodelengineextension.managers.resourcepack.generator;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import me.zimzaza4.geyserutils.geyser.GeyserUtils;
-import re.imc.geysermodelenginepackgenerator.managers.resourcepack.generator.data.TextureData;
+import re.imc.geysermodelengineextension.managers.resourcepack.generator.data.TextureData;
 
 import java.util.*;
 

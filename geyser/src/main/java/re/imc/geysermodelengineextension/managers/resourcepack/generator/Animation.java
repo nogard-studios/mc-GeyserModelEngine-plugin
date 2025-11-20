@@ -1,10 +1,10 @@
-package re.imc.geysermodelenginepackgenerator.managers.resourcepack.generator;
+package re.imc.geysermodelengineextension.managers.resourcepack.generator;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import re.imc.geysermodelenginepackgenerator.GeyserModelEnginePackGenerator;
+import re.imc.geysermodelengineextension.GeyserModelEngineExtension;
 
 import java.util.HashSet;
 import java.util.Map;
@@ -111,7 +111,7 @@ public class Animation {
 
         if (i == 0) return;
 
-        GeyserModelEnginePackGenerator.getExtension().getResourcePackManager().getEntityCache().get(modelId).setHasHeadAnimation(true);
+        GeyserModelEngineExtension.getExtension().getResourcePackManager().getEntityCache().get(modelId).setHasHeadAnimation(true);
 
         object.add("bones", bones);
         json.get("animations").getAsJsonObject().add("animation." + modelId + ".look_at_target", object);
