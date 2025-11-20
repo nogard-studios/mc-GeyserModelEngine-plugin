@@ -1,5 +1,5 @@
 name: GeyserModelEngineExtension
-id: geysermodelenginepackextension
+id: geysermodelengineextension
 main: re.imc.geysermodelengineextension.GeyserModelEngineExtension
 api: 2.7.0
 version: 1.0.0
