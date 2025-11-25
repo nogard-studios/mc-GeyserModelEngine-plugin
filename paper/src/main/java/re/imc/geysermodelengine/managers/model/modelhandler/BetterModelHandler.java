@@ -1,5 +1,6 @@
 package re.imc.geysermodelengine.managers.model.modelhandler;
 
+import kr.toxicity.model.api.entity.BaseEntity;
 import kr.toxicity.model.api.tracker.EntityTracker;
 import kr.toxicity.model.api.tracker.Tracker;
 import org.bukkit.Bukkit;
@@ -26,11 +27,11 @@ public class BetterModelHandler implements ModelHandler {
     //TODO fix dupe issue - dupe happens when server restart
     @Override
     public void createModel(Object... objects) {
-        Entity entitySource = (Entity) objects[0];
+        BaseEntity entitySource = (BaseEntity) objects[0];
         Tracker tracker = (Tracker) objects[1];
         EntityTracker entityTracker = (EntityTracker) objects[2];
 
-        int entityID = entitySource.getEntityId();
+        int entityID = entitySource.id();
 
         PropertyHandler propertyHandler = plugin.getEntityTaskManager().getPropertyHandler();
         EntityData entityData = new BetterModelEntityData(plugin, entitySource, tracker, entityTracker);

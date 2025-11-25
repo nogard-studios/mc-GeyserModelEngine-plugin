@@ -2,8 +2,6 @@ package re.imc.geysermodelengine;
 
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.event.PacketListenerPriority;
-import dev.jorel.commandapi.CommandAPI;
-import dev.jorel.commandapi.CommandAPIPaperConfig;
 import io.github.retrooper.packetevents.factory.spigot.SpigotPacketEventsBuilder;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
@@ -35,7 +33,7 @@ public class GeyserModelEngine extends JavaPlugin {
         PacketEvents.setAPI(SpigotPacketEventsBuilder.build(this));
         PacketEvents.getAPI().load();
 
-        CommandAPI.onLoad(new CommandAPIPaperConfig(this));
+//        CommandAPI.onLoad(new CommandAPIPaperConfig(this));
     }
 
     @Override
@@ -56,12 +54,12 @@ public class GeyserModelEngine extends JavaPlugin {
         this.modelManager.removeEntities();
 
         PacketEvents.getAPI().terminate();
-        CommandAPI.onDisable();
+//        CommandAPI.onDisable();
     }
 
     private void loadHooks() {
         PacketEvents.getAPI().init();
-        CommandAPI.onEnable();
+//        CommandAPI.onEnable();
     }
 
     private void loadBStats() {

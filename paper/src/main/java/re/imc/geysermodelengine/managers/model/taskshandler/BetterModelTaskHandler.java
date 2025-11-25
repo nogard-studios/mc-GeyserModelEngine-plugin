@@ -2,6 +2,7 @@ package re.imc.geysermodelengine.managers.model.taskshandler;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
+import kr.toxicity.model.api.entity.BaseEntity;
 import kr.toxicity.model.api.tracker.Tracker;
 import me.zimzaza4.geyserutils.spigot.api.EntityUtils;
 import org.bukkit.entity.Entity;
@@ -53,17 +54,17 @@ public class BetterModelTaskHandler implements TaskHandler {
         if (entity.isDead()) return;
 
         Set<Player> viewers = entityData.getViewers();
-        Entity entitySource = entityData.getEntitySource();
+        BaseEntity entitySource = entityData.getEntitySource();
         Tracker tracker = entityData.getTracker();
 
         entityData.teleportToModel();
 
-        if (entitySource.isDead() || tracker.forRemoval()) {
+        if (entitySource.dead() || tracker.forRemoval()) {
             removed = true;
             entity.remove();
 
-            plugin.getModelManager().getEntitiesCache().remove(entitySource.getEntityId());
-            plugin.getModelManager().getModelEntitiesCache().remove(entitySource.getEntityId());
+            plugin.getModelManager().getEntitiesCache().remove(entitySource.id());
+            plugin.getModelManager().getModelEntitiesCache().remove(entitySource.id());
 
             cancel();
             return;

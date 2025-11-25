@@ -2,10 +2,10 @@ package re.imc.geysermodelengine.managers.model.entity;
 
 import com.github.retrooper.packetevents.protocol.entity.type.EntityTypes;
 import com.google.common.collect.Sets;
+import kr.toxicity.model.api.entity.BaseEntity;
 import kr.toxicity.model.api.tracker.EntityTracker;
 import kr.toxicity.model.api.tracker.Tracker;
 import org.bukkit.Location;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import re.imc.geysermodelengine.GeyserModelEngine;
 import re.imc.geysermodelengine.managers.model.taskshandler.BetterModelTaskHandler;
@@ -20,7 +20,7 @@ public class BetterModelEntityData implements EntityData {
     private final PacketEntity entity;
     private final Set<Player> viewers = Sets.newConcurrentHashSet();
 
-    private final Entity entitySource;
+    private final BaseEntity entitySource;
     private final Tracker tracker;
     private final EntityTracker entityTracker;
 
@@ -28,20 +28,20 @@ public class BetterModelEntityData implements EntityData {
 
     private boolean hurt;
 
-    public BetterModelEntityData(GeyserModelEngine plugin, Entity entitySource, Tracker tracker, EntityTracker entityTracker) {
+    public BetterModelEntityData(GeyserModelEngine plugin, BaseEntity entitySource, Tracker tracker, EntityTracker entityTracker) {
         this.plugin = plugin;
 
         this.entitySource = entitySource;
         this.tracker = tracker;
         this.entityTracker = entityTracker;
-        this.entity = new PacketEntity(EntityTypes.PIG, viewers, entitySource.getLocation());
+        this.entity = new PacketEntity(EntityTypes.PIG, viewers, entitySource.location());
 
         runEntityTask();
     }
 
     @Override
     public void teleportToModel() {
-        Location location = entitySource.getLocation();
+        Location location = entitySource.location();
         entity.teleport(location);
     }
 
@@ -68,7 +68,7 @@ public class BetterModelEntityData implements EntityData {
         this.hurt = hurt;
     }
 
-    public Entity getEntitySource() {
+    public BaseEntity getEntitySource() {
         return entitySource;
     }
 

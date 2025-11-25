@@ -21,7 +21,7 @@ repositories {
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21.10-R0.1-SNAPSHOT")
-    implementation("dev.jorel:commandapi-paper-shade:11.0.0")
+//    implementation("dev.jorel:commandapi-paper-shade:11.0.0")
 
     compileOnly("com.ticxo.modelengine:ModelEngine:R4.0.9")
     compileOnly("io.github.toxicity188:bettermodel:1.14.0")
