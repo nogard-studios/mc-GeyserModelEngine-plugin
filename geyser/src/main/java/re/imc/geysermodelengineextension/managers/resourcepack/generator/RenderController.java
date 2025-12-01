@@ -50,7 +50,7 @@ public class RenderController {
 
             JsonObject controller = new JsonObject();
 
-            renderControllers.add("controller.render." + modelId + "_" + key, controller);
+            renderControllers.add("controller.render." + key, controller);
 
             if (!entity.getModelConfig().getPerTextureUvSize().isEmpty()) {
                 Integer[] size = entity.getModelConfig().getPerTextureUvSize().getOrDefault(key, new Integer[]{16, 16});

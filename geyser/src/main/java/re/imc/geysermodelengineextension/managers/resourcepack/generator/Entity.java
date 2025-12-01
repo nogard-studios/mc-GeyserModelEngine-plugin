@@ -92,7 +92,7 @@ public class Entity {
 
             }
 
-            jsonRenderControllers.add("controller.render." + modelId + "_" + name);
+            jsonRenderControllers.add("controller.render." + name);
         }
 
         JsonArray animate = description.get("scripts").getAsJsonObject().get("animate").getAsJsonArray();
