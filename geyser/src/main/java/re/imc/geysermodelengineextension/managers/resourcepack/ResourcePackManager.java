@@ -162,8 +162,7 @@ public class ResourcePackManager {
 
         for (Map.Entry<String, Map<String, TextureData>> textures : textureCache.entrySet()) {
             for (Map.Entry<String, TextureData> entry : textures.getValue().entrySet()) {
-                Path path = texturesFolder.toPath().resolve(textures.getKey() + "/" + entry.getKey() + ".png");
-                path.toFile().getParentFile().mkdirs();
+                Path path = texturesFolder.toPath().resolve(entry.getKey() + ".png");
 
                 if (path.toFile().exists()) continue;
 

@@ -77,7 +77,7 @@ public class Entity {
 
         if (modelConfig.getPerTextureUvSize().isEmpty()) {
             jsonGeometry.addProperty("default", "geometry.meg_" + modelId);
-            jsonTextures.addProperty("default", "textures/entity/" + modelId + "/" + textureMap.keySet().stream().findFirst().orElse("def"));
+            jsonTextures.addProperty("default", "textures/entity/" + textureMap.keySet().stream().findFirst().orElse("def"));
         }
 
         for (String name : textureMap.keySet()) {
@@ -88,7 +88,7 @@ public class Entity {
                 String suffix = size[0] + "_" + size[1];
 
                 jsonGeometry.addProperty("t_" + suffix, "geometry.meg_" + modelId + "_" + suffix);
-                jsonTextures.addProperty(name, "textures/entity/" + modelId + "/" + name);
+                jsonTextures.addProperty(name, "textures/entity/" + name);
 
             }
 
